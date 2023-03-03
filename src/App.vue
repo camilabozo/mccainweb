@@ -1,16 +1,19 @@
 <template>
   <div id="app">
     <RegisterInput msg="Welcome to Your Vue.js App"/>
+    <NoticeComponent/>
   </div>
 </template>
 
 <script>
 import RegisterInput from './components/RegisterInput.vue'
+import NoticeComponent from './components/NoticeComponent.vue'
 
 export default {
   name: 'App',
   components: {
-    RegisterInput
+    RegisterInput,
+    NoticeComponent
   }
 }
 </script>
