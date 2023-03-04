@@ -6,7 +6,7 @@
   </template>
   
   <script>
-    import { getDatabase, ref, set } from "firebase/database";
+    import { ref, set } from "firebase/database";
 
   export default {
     name: 'NoticeComponent',
@@ -14,19 +14,23 @@
     data(){
         return {
             noticia:"",
-            noticiaId: 1
+            cantidadNoticias: null
         }
     },
 
-   methods:{
+    created(){
+        const noticiasRef = ref(this.$database, 'noticias');
+        noticiasRef.once('value')
+        .then(snapshot => {
+            this.cantidadNoticias = snapshot.numChildren();
+        });
+    },
+
+    methods:{
         writeNoticia() {
-            console.log("holaaaaaaaaa");
-            const db = getDatabase();
-            console.log(db);
-            set(ref(db, 'noticias/' + this.noticiaId), {
+            set(ref(this.$database, 'noticias/' + (this.cantidadNoticias + 1)), {
                 noticia: this.noticia
             });
-            this.noticia = this.noticiaId + 1
         }
    }
   }

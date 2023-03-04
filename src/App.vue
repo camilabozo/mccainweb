@@ -1,18 +1,19 @@
 <template>
   <div id="app">
-    <RegisterInput msg="Welcome to Your Vue.js App"/>
+    <!-- <RegisterInput msg="Welcome to Your Vue.js App"/> -->
+    <h4>Agrega una noticia</h4>
     <NoticeComponent/>
   </div>
 </template>
 
 <script>
-import RegisterInput from './components/RegisterInput.vue'
+// import RegisterInput from './components/RegisterInput.vue'
 import NoticeComponent from './components/NoticeComponent.vue'
 
 export default {
   name: 'App',
   components: {
-    RegisterInput,
+    // RegisterInput,
     NoticeComponent
   }
 }

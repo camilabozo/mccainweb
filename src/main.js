@@ -7,10 +7,8 @@ new Vue({
   render: h => h(App),
 }).$mount('#app')
 
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getDatabase, ref, set } from "firebase/database";
-
+import { initializeApp } from 'firebase/app';
+import { getDatabase } from 'firebase/database';
 
 const firebaseConfig = {
   databaseURL: "https://mccain-db-default-rtdb.firebaseio.com",
@@ -25,16 +23,4 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const database = getDatabase(app);
-
-function writeNoticia() {
-  console.log("holaaaaaaaaa");
-  const db = getDatabase();
-  console.log(db);
-  set(ref(db, 'noticias/1'), {
-      noticia: "se ejecuto la funcion"
-  });
-}
-
-writeNoticia()
+Vue.prototype.$database = getDatabase(app)
